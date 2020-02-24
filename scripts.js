@@ -8,13 +8,17 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
     case 'NEXT_LYRIC':
     let newArrayPosition = state.arrayPosition + 1;
-    let newState = {
+    newState = {
       songLyricsArray: state.songLyricsArray,
       arrayPosition: newArrayPosition,
     }
+      return newState;
+      case 'RESTART_SONG':
+      newState = initialState;
       return newState;
     default:
       return state;
@@ -30,6 +34,12 @@ expect(reducer(initialState, {type: 'NEXT_LYRIC'})).toEqual({
   arrayPosition: 1
 });
 
+expect(reducer({
+  songLyricsArray: songLyricsArray,
+  arrayPosition: 1,
+},
+{type: 'RESTART_SONG'})
+).toEqual(initialState);
 // REDUX reducer
 
 
@@ -58,10 +68,12 @@ window.onload = function() {
 
 // CLICK LISTENER
 const userClick = () => {
+  const currentState = store.getState();
+  if (currentState.arrayPosition === currentState.songLyricsArray.length -1) {
+    store.dispatch({ type: 'RESTART_SONG'});
+  } else {
   store.dispatch({ type: 'NEXT_LYRIC'} );
-
-  console.log(store.getState());
-
+ }
 }
 //SUBSCRIBE TO REDUX STORE
 
