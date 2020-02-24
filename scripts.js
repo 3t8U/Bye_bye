@@ -25,21 +25,21 @@ const reducer = (state = initialState, action) => {
   }
 }
 // JEST TESTS + SETUP
-const { expect } = window;
-
-expect(reducer(initialState, { type: null})).toEqual(initialState);
-
-expect(reducer(initialState, {type: 'NEXT_LYRIC'})).toEqual({
-  songLyricsArray: songLyricsArray,
-  arrayPosition: 1
-});
-
-expect(reducer({
-  songLyricsArray: songLyricsArray,
-  arrayPosition: 1,
-},
-{type: 'RESTART_SONG'})
-).toEqual(initialState);
+// const { expect } = window;
+//
+// expect(reducer(initialState, { type: null})).toEqual(initialState);
+//
+// expect(reducer(initialState, {type: 'NEXT_LYRIC'})).toEqual({
+//   songLyricsArray: songLyricsArray,
+//   arrayPosition: 1
+// });
+//
+// expect(reducer({
+//   songLyricsArray: songLyricsArray,
+//   arrayPosition: 1,
+// },
+// {type: 'RESTART_SONG'})
+// ).toEqual(initialState);
 // REDUX reducer
 
 
